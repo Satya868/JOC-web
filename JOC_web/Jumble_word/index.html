@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1 style="display: flex; color: blue;">This Is Jumble Game where you guess the Correct word from jumbled word</h1>
+
+    <div class="st">
+        <div class="start" style="cursor: pointer;">
+            start
+        </div>
+    </div>
+
+    
+    <div class="container" style="display: none;">
+        <h3>Here goes the challenge just reassemble it to meaning full sentence <span class="span"
+                style="color: rgb(20, 171, 78); "></span></h3>
+        <form id="my-form">
+            <textarea id="input" placeholder="Type your answer here..."></textarea>
+    
+            <button type="submit">Submit</button>
+        </form>
+    
+        <span id="hii"></span>
+    </div>
+
+    <script>
+        var elements = document.getElementsByClassName('start');
+        let tg = false;
+
+        const words = ["Ram", "america", "satya", "computer", "matplotlib", "apple", "class", "studyroom"];
+        let word = words[Math.floor(Math.random() * words.length)];
+        const text = word.split('').sort(() => Math.random() - 0.5).join('');
+
+        var sp = document.querySelector('.container .span');
+
+
+        elements[0].addEventListener('click', () => {
+            tg = !tg;
+            var cont = document.getElementsByClassName('container');
+
+
+
+            // let word = words[Math.floor(Math.random() * words.length)];
+            // const text = word.split('').sort(() => Math.random() - 0.5).join('');
+
+            // var sp = document.querySelector('.container .span');
+
+
+            if (tg == true) {
+                cont[0].style.display = ""
+                sp.innerHTML = text;
+
+            } else {
+                cont[0].style.display = "none"
+
+            }
+
+        })
+
+
+
+
+        var form = document.getElementById('my-form');
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const u_input = document.getElementById('input').value;
+            var resp = document.getElementById('hii')
+            var suii = "Correct !"
+            var messi = "bhak sala padhai karo"
+
+            if(u_input.trim() === word){
+
+                resp.innerHTML = suii
+                resp.style.fontWeight = 800;
+
+            }else resp.innerHTML = messi
+
+        })
+
+
+    </script>
+</body>
+
+</html>
